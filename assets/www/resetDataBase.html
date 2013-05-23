@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Hello World</title>
+</head>
+<body>
+<div class="app">
+    <h1>Reset Database</h1>
+    <a class="btn" onclick="onReset()">Reset</a>
+    <a class="btn" href="index.html">Back</a>
+    <div id="turnMe" ></div>
+</div>
+<script type="text/javascript" src="cordova-2.7.0.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/jquery_1.9.1.js"></script>
+<script type="text/javascript">
+    document.addEventListener('deviceready', onDeviceReady, false);
+
+    function onDeviceReady(){
+        console.log("Device Ready");
+        var db = window.openDatabase("Database", "1.0", "Gallery", 1000000);
+        db.transaction(listeDB, errorCB, successCB);
+    }
+
+    function onReset(){
+        console.log("Reset DB");
+        var db = window.openDatabase("Database", "1.0", "Gallery", 1000000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    function populateDB(tx){
+        console.log("Reset sql");
+        tx.executeSql('DROP TABLE IF EXISTS Pictures');
+    }
+
+    function listeDB(tx){
+        console.log("Liste Pictures");
+        tx.executeSql('SELECT * FROM Pictures',[],displayRows,errorCB);
+    }
+
+    function displayRows(tx,results){
+        console.log("Affiche pictures");
+        var len = results.rows.length;
+        var html="";
+        html+="Il y a "+len+" lignes dans la table NAME";
+        for(i=0;i<len;i++){
+            html+="<br>Row = "+i+" ID = "+results.rows.item(i).id+" Data = "+results.rows.item(i).data;
+        }
+
+        $('#turnMe').html(html);
+    }
+    // Transaction error callback
+    //
+    function errorCB(tx, err) {
+        console.log("Error processing SQL: "+err);
+    }
+
+    // Transaction success callback
+    //
+    function successCB() {
+        console.log("success!");
+    }
+</script>
+</body>
+</html>

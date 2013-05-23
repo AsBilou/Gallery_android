@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Photo</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/capture.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/gps.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery_1.9.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" charset="utf-8">
+        var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value
+        var positionGps;
+        var watchID = null;
+        var pictureData;
+        capture.initialize();
+    </script>
+</head>
+<body>
+<a class="btn capturePhoto" onclick="capture.capturePhoto();">Capture Photo</a><br>
+<a class="btn captureSave" onclick="capture.onSave()" style="display: none">Sauvegarder photo</a><br>
+<a class="btn displaySave" onclick="capture.onDisplaySql()" style="display: block">display sql</a><br>
+<p id="geolocation">Watching geolocation...</p>
+<div id="turnMe" ></div>
+<img style="display:none;width: 100%" id="smallImage" src="" />
+</body>
+</html>

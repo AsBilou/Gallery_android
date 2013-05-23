@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Photo</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery_1.9.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/importe.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/capture.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/gps.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" charset="utf-8">
+        var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value
+        var watchID = null;
+        var pictureData;
+        var positionGps;
+        importe.initialize();
+    </script>
+</head>
+<body>
+<a class="btn capturePhoto" onclick="importe.getPhoto(navigator.camera.PictureSourceType.PHOTOLIBRARY);">Importer Photo</a><br>
+<a class="btn capturePhoto" onclick="capture.onSave()">Save Photo</a><br>
+<img style="width: 100%;" id="importedPicture" src="" />
+</body>
+</html>
