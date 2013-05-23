@@ -84,26 +84,6 @@ var capture = {
         var sql = 'INSERT INTO Pictures (data,lat,long,status) VALUES ("'+pictureURI+'",'+latitude+','+longitude+',"local")';
         tx.executeSql(sql);
     },
-    //A delete
-    onDisplaySql:function(){
-        var db = window.openDatabase("Database", "1.0", "Gallery", 1000000);
-        db.transaction(capture.displayDB, capture.errorCB, capture.successCB);
-    },
-    //A delete
-    displayDB:function(tx){
-        tx.executeSql('SELECT * FROM Pictures',[],capture.displayRows,capture.errorCB);
-    },
-    //A delete
-    displayRows:function(tx,results){
-        console.log("Affiche pictures");
-        var len = results.rows.length;
-        var html="";
-        html+="Il y a "+len+" lignes dans la table Pictures";
-        for(i=0;i<len;i++){
-            html+="<br>Row = "+i+" ID = "+results.rows.item(i).id+" Data = "+results.rows.item(i).data+" Lat = "+results.rows.item(i).lat+" Long = "+results.rows.item(i).long;
-        }
-        $('#turnMe').html(html);
-    },
     // Transaction error callback
     //
     errorCB:function(tx, err) {
@@ -113,7 +93,15 @@ var capture = {
     // Transaction success callback
     //
     successCB:function() {
-        alert("success! Picture save in database");
+        navigator.notification.vibrate(500);
+        navigator.notification.alert(
+            'Photo enregistré',  // message
+            capture.alertDismissed,         // callback
+            'PhotoBank',            // title
+            'OK'                  // buttonName
+        );
+        $('.capturePhoto').html('Nouvelle photo');
+        $('.captureSave').css('display','none');
     },
 
     /*
@@ -123,5 +111,8 @@ var capture = {
     onBackButton:function(){
         gps.clearWatch();
         window.location = 'index.html';
+    },
+    alertDismissed:function(){
+
     }
 }

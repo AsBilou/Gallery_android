@@ -16,13 +16,16 @@
         var destinationType; // sets the format of returned value
         var watchID = null;
         var pictureData;
-        var positionGps;
+        var json;
+        var obj;
         importe.initialize();
     </script>
 </head>
-<body>
-<a class="btn capturePhoto" onclick="importe.getPhoto(navigator.camera.PictureSourceType.PHOTOLIBRARY);">Importer Photo</a><br>
-<a class="btn capturePhoto" onclick="capture.onSave()">Save Photo</a><br>
-<img style="width: 100%;" id="importedPicture" src="" />
+<body id="importePicture">
+<div>
+    <a class="btn capturePhoto" onclick="importe.getPhoto(pictureSource.PHOTOLIBRARY);">Importer Photo</a><br>
+    <a class="btn captureSave" style="display: none;" onclick="capture.onSave()">Save Photo</a><br>
+    <img style="width: 100%;" id="importedPicture" src="" />
+</div>
 </body>
 </html>

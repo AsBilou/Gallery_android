@@ -24,17 +24,15 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
+    background: #cc8166;
+    background: -moz-radial-gradient(center, ellipse cover,  #cc8166 0%, #db5000 99%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cc8166), color-stop(99%,#db5000));
+    background: -webkit-radial-gradient(center, ellipse cover,  #cc8166 0%,#db5000 99%);
+    background: -o-radial-gradient(center, ellipse cover,  #cc8166 0%,#db5000 99%);
+    background: -ms-radial-gradient(center, ellipse cover,  #cc8166 0%,#db5000 99%);
+    background: radial-gradient(ellipse at center,  #cc8166 0%,#db5000 99%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc8166', endColorstr='#db5000',GradientType=1 );
+
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -47,16 +45,28 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    height: 50px;
+    left: 50%;
+    margin: -251px 0 0 -136px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 275px;
+}
+.picture ul li{
+    float:left;
+    list-style-type:none;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
+ul {
+    margin: 0 0 30px 17px;
+}
+.picture img{
+    width:100px;
+    height:auto;
+    border:8px solid white;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.39);
 }
 
 /* Landscape layout (with min-width) */
@@ -112,4 +122,68 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.modal.fade.in {
+    top: 0;
+}
+.modal{
+    border-radius:0;
+    border:0;
+    left: 0;
+    right: 0;
+    height: 100%;
+}
+.modal-footer{
+    width: 93%;
+    position: absolute;
+    bottom:0;
+    background-color: #ffffff;
+    border:0;
+    padding: 12px 15px 6px 16px;
+}
+.modal-body{
+    max-height: 84%;
+}
+button.close{
+    margin-bottom: 8px;
+    margin-top: -8px;
+}
+.status{
+    float: left;
+    font-style: italic;
+    margin-top: 6px;
+    text-align: left;
+    text-transform: none;
+}
+.status span{
+    font-weight:bold;
+    color:#b8b8b8;
+}
+.btn-primary{
+    background-color: #d65f36;
+    border-radius: 0;
+    border:0;
+    color:#ffffff;
+    background-image: none;
+}
+.btn-primary:hover{
+    background-color: #d65f36;
+}
+.picture ul{
+    margin-top:-10px;
+}
+.btn-home{
+    margin-bottom:10px;
+}
+#capture div,#importePicture div{
+    margin: 50px auto 0;
+    width: 230px;
+    text-align: center;
+}
+#importePicture .btn{
+    margin-bottom: 15px;
+}
+#capture .btn,#importePicture .btn{
+    width:88%;
 }

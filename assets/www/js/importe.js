@@ -22,7 +22,8 @@ var importe = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
         //Récuperation de la position GPS
         gps.startWatch();
     },
@@ -36,7 +37,7 @@ var importe = {
     getPhoto:function(source) {
         // Retrieve image file location from specified source
         navigator.camera.getPicture(importe.onPhotoURISuccess, importe.onFail, { quality: 100,
-            destinationType: navigator.camera.DestinationType.FILE_URI,
+            destinationType: destinationType.FILE_URI,
             sourceType: source });
     },
     onPhotoURISuccess:function(imageURI){
@@ -44,6 +45,7 @@ var importe = {
         pictureData = imageURI;
         //console.log(pictureData);
         smallImage.src = pictureData;
+        $('.captureSave').css('display','block');
     },
     onFail:function(message){
         alert('Failed because: ' + message);

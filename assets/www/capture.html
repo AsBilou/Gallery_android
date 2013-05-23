@@ -19,12 +19,11 @@
         capture.initialize();
     </script>
 </head>
-<body>
+<body id="capture">
+<div>
 <a class="btn capturePhoto" onclick="capture.capturePhoto();">Capture Photo</a><br>
 <a class="btn captureSave" onclick="capture.onSave()" style="display: none">Sauvegarder photo</a><br>
-<a class="btn displaySave" onclick="capture.onDisplaySql()" style="display: block">display sql</a><br>
-<p id="geolocation">Watching geolocation...</p>
-<div id="turnMe" ></div>
 <img style="display:none;width: 100%" id="smallImage" src="" />
+</div>
 </body>
 </html>

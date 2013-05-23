@@ -25,28 +25,43 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>Photobank</title>
     </head>
     <body>
         <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Check data</p>
-                <p class="event received">...</p>
-            </div>
-            <a class="btn" href="capture.html">camera</a><br>
-            <a class="btn" href="gps.html">GPS</a><br>
-            <a class="btn" href="resetDataBase.html">RESET DATABASE</a><br>
-            <a class="btn" href="importePicture.html">Importer photo</a>
+            <img src="img/logo.png" alt="logo" width="310" height="157">
+            <a class="btn btn-home" href="capture.html">Prendre une photo</a><br>
+            <a class="btn btn-home" href="importePicture.html">Importer photo</a>
             <div id="pictures">
-
+                <div class='picture'>
+                    <ul>
+                        <!--li>
+                            <a href="#modal" role="button" data-toggle="modal">
+                                <img src="img/1.jpg" width="200" height="auto" alt="1">
+                            </a>
+                        </li-->
+                    </ul>
+                </div>
             </div>
+            <!-- Modal -->
+            <div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <p><img src="img/1.jpg" alt="1"></p>
+                </div>
+                <div class="modal-footer">
+                    <p class="status"><span>Status : </span>In progress</p>
+                    <button class="btn btn-primary">Supprimer</button>
+                </div>
+            </div>
+
+
         </div>
         <script type="text/javascript" src="cordova-2.7.0.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery_1.9.1.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            var imageURI;
             app.initialize();
         </script>
     </body>
